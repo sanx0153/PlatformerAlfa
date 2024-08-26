@@ -1,5 +1,6 @@
 class AbstractAvatar {
-    __New(parent,spriteSet,subSet,frame := 1) {
+    __New(parent,spriteSet,subSet,frame := 1) 
+    {
         this.control := API.graphics.control()
         this.control.Move(,,TILE_SIZE,TILE_SIZE)
         this.control.Value := API.graphics.Sprite(spriteSet,subSet,frame)
@@ -250,29 +251,33 @@ class AbstractObject extends AbstractBody
     }
 }
 
-class AbstractScene {
-    title := ""
-    background := ""
-    bricks := []
+class AbstractScene
+{
+    title            := ""
+    background       := ""
+    bricks           := []
     shouldStartScene := true
-    shouldEndScene := false
-    player := ""
-    queue := Queue()
+    shouldEndScene   := false
+    player           := ""
+    queue            := Queue()
     collisionManager := CollisionManager()
-    __New(title,nextSceneTitle) {
-        this.title          := title
-        this.nextSceneTitle := nextSceneTitle
-        this.shouldEndScene := false
+    __New(title,nextSceneTitle) 
+    {
+        this.title            := title
+        this.nextSceneTitle   := nextSceneTitle
+        this.shouldEndScene   := false
         this.collisionManager := CollisionManager()
         API.graphics.CreateWindow()
 
     }
-    CreateBackgroundControl() {
+    CreateBackgroundControl() 
+    {
         control := API.graphics.Control()
         control.Move(0,0,WINDOWS_SIZE,WINDOWS_SIZE)
         return control
     }
-    CreateText(varName,color,text,y) {
+    CreateText(varName,color,text,y) 
+    {
         text               := StrSplit(text)
         color              := color
         xFirst             := Round((WINDOWS_SIZE / 2) - (TILE_SIZE * (text.Length / 2)))
@@ -283,7 +288,8 @@ class AbstractScene {
             this.%varName%Text[A_Index].Move((xFirst + ((A_Index - 1) * TILE_SIZE)),y)   
         }
     }
-    CreateTextLeft(varName,color,text,y) {
+    CreateTextLeft(varName,color,text,y) 
+    {
         text               := StrSplit(text)
         color              := color
         xFirst             := Round((10 + (WINDOWS_SIZE / 4) - (TILE_SIZE * (text.Length / 2))))
@@ -294,7 +300,8 @@ class AbstractScene {
             this.%varName%Text[A_Index].Update((xFirst + ((A_Index - 1) * TILE_SIZE)),y)   
         }
     }
-    CreateTextRight(varName,color,text,y) {
+    CreateTextRight(varName,color,text,y) 
+    {
         text               := StrSplit(text)
         color              := color
         xFirst             := Round(((WINDOWS_SIZE / 4) * 3) - (TILE_SIZE * (text.Length / 2)))
@@ -305,13 +312,16 @@ class AbstractScene {
             this.%varName%Text[A_Index].Update((xFirst + ((A_Index - 1) * TILE_SIZE)),y)   
         }
     }
-    EndScene() {
+    EndScene() 
+    {
         API.game.shouldEndScene := true
     }
-    GetNextScene() {
+    GetNextScene() 
+    {
         return this.nextSceneTitle
     }
-    Render() {
+    Render() 
+    {
         this.player.Render()
     }
     StartThisScene()
@@ -321,7 +331,8 @@ class AbstractScene {
         this.player         := %this.title%Player()
         this.SetBackground()
     }
-    SetBackground(SubSet := this.title,Frame := 1) {
+    SetBackground(SubSet := this.title,Frame := 1) 
+    {
         this.background.Value := API.graphics.Sprite("bg",SubSet,Frame)
     }
     UpdateInput()

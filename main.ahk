@@ -9,6 +9,7 @@
 #Include API\graphics.ahk
 #Include API\input.ahk
 #Include API\queue.ahk
+#Include API\statemachine.ahk
 
 ;Inclusão de LIB's
 #Include lib\abstractions.ahk
@@ -16,7 +17,6 @@
 #Include lib\game.ahk
 #Include lib\objects.ahk
 #Include lib\scenery.ahk
-#Include lib\statemachine.ahk
 
 ;Declarações
 ListLines()
