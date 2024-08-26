@@ -418,7 +418,7 @@ class CollisionManager
             case one.x1 <= another.x2 :
                 one.parent.x := (another.x2 + 1)
             case one.x2 >= another.y1 :
-                one.parent.x := ((another.x1 - 1) - this.width)
+                one.parent.x := ((another.x1 - 1) - one.width)
         }
     }
     EmptyGrid()
